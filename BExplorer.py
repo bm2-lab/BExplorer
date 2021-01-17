@@ -1,34 +1,5 @@
 # -*- coding: utf-8 -*-
 
-'''
-接下来要做：装cpu的opencl
-'''
-
-'''
-支持文件
-/home/zhanggc/mainData/genome_primary: 基因组文件（只保留23条染色体数据）
-/home/zhanggc/mainData/dbsnp_146.hg38.vcf: 人类SNP文件
-
-中间文件
-snp_output.txt：暂时保存snp查询结果，每次都会覆盖
-input_find_offtarget.txt：作为cas-offinder的输入文件，每次都会覆盖
-output_find_offtarget.txt：作为cas-offinder的输出文件，每次都会覆盖
-ryuyan.R：作为R语言的输入文件，每次都会覆盖
-RRAresult：作为R语言的输出文件
-
-输出文件
-/home/zhanggc/wholefunction_output_0325: 最终输出文件
-/home/zhanggc/timelog: 实践统计输出文件
-
-需要的软件
-vcftools
-cas-offinder(必须安装openCL)
-python2.7
-R
-R.RobustRankAggreg
-CFD_Scoring
-'''
-
 import subprocess, logging, time, re, sys, argparse, os
 import pandas as pd, numpy as np
 import regex as regex
