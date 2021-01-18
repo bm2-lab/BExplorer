@@ -21,27 +21,26 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 
 ## Usage
 ### Parameters
-program requires 4 parameters, and each parameter is indispensable
-    parser.add_argument('--chr', required=True, choices=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', 
-        '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', 'X', 'Y'] , 
-        help='input your target chromosome number(X, Y need to be capitalized)')
-    parser.add_argument('--pos', required=True, type=int, help='input your target position number (GRCh38.p12)')
-    parser.add_argument('--transtype', required=True, choices=['c2t', 'a2g'], help='c2t or a2t. \n '
-                                                                                   '*****c2t(CBE): regard the base at your target position is C, '
-                                                                                   'and you want to convert C to T. \n'
-                                                                                   '******a2t(ABE):regard the base at your target position is A, and you want to convert A to G')
-    parser.add_argument('--editor', required=True, choices= editor_list, help='choose one base editor.\n'
-                                                                              '*****CBE: [ BE1, BE2, BE3, HF-BE3, BE4, BE4max, BE4-GAM, YE1-BE3, EE-BE3, YE2-BE3, YEE-BE3, '
-                                                                              'VQR-BE3, VRER-BE3, SaBE3, SaBE4, SaBE4-Gam, SaKKH-BE3, Target-AID, BE-PLUS ]. \n'
-                                                                              '*****ABE: [ ABE7.9, ABE7.10, xABE, ABESa, VQR-ABE, VRER-ABE, SaKKH-ABE ]')
-
 
 * --chr
-  Chromosome of target base. You can choose in 1~22, X, Y (Note: X, Y need to be capitalized)
 
-* -g, --genome
+  chromosome of target base. You can choose in `1~22, X, Y` (Note: X, Y need to be capitalized)
 
-  Reference genome file, must be hg19 or GRCh37 .
+* --pos
+
+  position number of target base(GRCh38.p12).
+  
+* --transtype
+
+  select base conversion type. There are two options: `c2t and a2g`
+
+* --editor
+
+  base editor you want to use. You can choose 1 from 26 base editors.
+  * CBE: `BE1, BE2, BE3, HF-BE3, BE4, BE4max, BE4-GAM, YE1-BE3, EE-BE3, YE2-BE3, YEE-BE3, VQR-BE3, VRER-BE3, SaBE3, SaBE4, SaBE4-Gam, SaKKH-BE3, Target-AID, BE-PLUS`
+  * ABE: `ABE7.9, ABE7.10, xABE, ABESa, VQR-ABE, VRER-ABE, SaKKH-ABE`
+  
+> NOTE: if --transtype = c2t, --editor can only choose CBE. if --transtype = a2g, --editor can only choose ABE. 
 
 
 ### example
@@ -55,7 +54,7 @@ For detailed usage information, please refer to the [BExplorer User Manual](/doc
 
 ### Output
 
-The output file "putative_neo.txt" contains all putative neoantigens information.
+The output file "output_file_`chr`:`pos`.tsv" contains all gRNA prediction information.
 
 ## Citation
 Systematic exploration of optimized base-editing gRNA designs and pleiotropic effects with BExplorer, submitted, 2021
