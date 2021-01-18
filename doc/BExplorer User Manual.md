@@ -21,11 +21,7 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 
 ## Usage
 ### Parameters
-
-    parser = argparse.ArgumentParser(description = 'Predicting the best gRNA at any location in the human genome for the base editor')
-    editor_list = ['BE1', 'BE2', 'BE3', 'HF-BE3', 'BE4', 'BE4max', 'BE4-GAM', 'YE1-BE3 ', 'EE-BE3', 'YE2-BE3',
-                   'YEE-BE3', 'VQR-BE3', 'VRER-BE3', 'SaBE3', 'SaBE4', 'SaBE4-Gam', 'SaKKH-BE3', 'Target-AID',
-                   'BE-PLUS', 'ABE7.9', 'ABE7.10', 'xABE', 'ABESa', 'VQR-ABE', 'VRER-ABE', 'SaKKH-ABE']
+program requires 4 parameters, and each parameter is indispensable
     parser.add_argument('--chr', required=True, choices=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', 
         '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', 'X', 'Y'] , 
         help='input your target chromosome number(X, Y need to be capitalized)')
@@ -40,9 +36,8 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
                                                                               '*****ABE: [ ABE7.9, ABE7.10, xABE, ABESa, VQR-ABE, VRER-ABE, SaKKH-ABE ]')
 
 
-* -j, --junc
-
-  Junction file, the default format is STAR result SJ.out.tab.  You can also specify your own format by columns names in your junction file and setting --columns. 
+* --chr
+  Chromosome of target base. You can choose in 1~22, X, Y (Note: X, Y need to be capitalized)
 
 * -g, --genome
 
