@@ -1,7 +1,7 @@
 # _BExplorer: optimizing base-editing gRNA designs and predicting pleiotropic effects_
 
 ## Introduction
-BExplorer is an integrated and comprehensive computational pipeline for optimizing the design of gRNAs in silico
+BExplorer is an integrated and comprehensive computational pipeline for optimizing the design of gRNAs in silico. BExplorer could design best gRNA for 26 existing base editors in base editing researching, and evaluate the pleiotropic effect of the corresponding base editing loci.
 
 ## Requirement
 ### software
@@ -50,7 +50,6 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 4. put `GRCh38.fna` into BExplorer/genomeDATA, put `dbsnp_146.hg38.vcf` into BExplorer/snpDATA
 5. /BExplorer/python3 BExplorer.py --chr 1 --pos 155238215 --transtype c2t --editor BE3
 
-For detailed usage information, please refer to the [BExplorer User Manual](/doc/BExplorer_User_Manual.md)
 
 ### Output
 
