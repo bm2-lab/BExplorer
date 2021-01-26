@@ -1,7 +1,7 @@
 # _BExplorer: optimizing base-editing gRNA designs and predicting pleiotropic effects_
 
 ## Introduction
-BExplorer is an integrated and comprehensive computational pipeline for optimizing the design of gRNAs in silico
+BExplorer is an integrated and comprehensive computational pipeline for optimizing the design of gRNAs in silico. BExplorer could design best gRNA for 26 existing base editors in base editing researching, and evaluate the pleiotropic effect of the corresponding base editing loci.
 
 ## Requirement
 ### software
