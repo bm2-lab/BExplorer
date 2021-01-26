@@ -31,7 +31,7 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 4. put `GRCh38.fna` into BExplorer/genomeDATA, put `dbsnp_146.hg38.vcf` into BExplorer/snpDATA
 5. /BExplorer/python3 BExplorer.py --chr 1 --pos 155238215 --transtype c2t --editor BE3
 
-For detailed usage information, please refer to the [BExplorer User Manual](/doc/BExplorer_User_Manual.md)
+For detailed usage information, please refer to the [BExplorer User Manual](main/doc/BExplorer_User_Manual.md)
 
 ## Citation
 Systematic exploration of optimized base-editing gRNA designs and pleiotropic effects with BExplorer, submitted, 2021
