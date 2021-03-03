@@ -116,9 +116,9 @@ def generate_primary_genome_file():
         linenum = linenum + 1
         numlist.append(linenum)
         if line[0] == '>':
-            titleseq.append(linenum) # 所有标题行的行序号数
+            titleseq.append(linenum) 
         if line.find('Primary Assembly') != -1 and line.find('unlocalized')==-1 and line.find('unplaced') == -1:
-            primaryseq.append(linenum) # 主要标题行的行序号数
+            primaryseq.append(linenum) 
 
     op1 = open('supportfile/primary_genome','w')
     for i in primaryseq:
@@ -207,7 +207,7 @@ def get_cangrna(args, pamLen, granLen, actWindow_range, seq_triple):
         baseLoc_in_seqTriple = overnum + 80
         minLocPam_distance = pam_range[0] - actWindow_range[1]
         maxLocPam_distance = pam_range[1] - actWindow_range[0]
-        seq_triple = seq_triple[: overnum - 1 + 80] + 'C' + seq_triple[overnum - 1 + 80 + 1 :] # 将目标位置转化为碱基C
+        seq_triple = seq_triple[: overnum - 1 + 80] + 'C' + seq_triple[overnum - 1 + 80 + 1 :] 
         re_rs = regex.finditer(re_cmd[pam], seq_triple[baseLoc_in_seqTriple - 1 + minLocPam_distance:
                                                          baseLoc_in_seqTriple - 1 + maxLocPam_distance + 1], overlapped=True)
         pam_loc = []
@@ -504,7 +504,6 @@ if __name__ == '__main__':
         op_output.write('\t'.join(['chr', 'position', 'target_in_ref', 'transtype', 'editor', 'candidate _gRNA_num',
                                    'candidate _gRNA', 'RRAscore', 'identicalBase_num_in_actWindow', 'GC%', 'repeated_gRNA_num_in_genome',
                                    'SNP_num', 'offtarget_score']) + '\n')
-        #####################筛选#############################
 
         pam_whether = check_pam(granLen, pam)
         if pam_whether == 1 :  
