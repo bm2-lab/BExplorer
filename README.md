@@ -21,7 +21,7 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 
 ## Usage
 ### input
-1. Reference genome file: `GRCh38.fna` or `hg38.fna`
+1. Reference genome file: `GRCh38.fna`(fasta format, such as .fna, .fa, .fasta)
 2. human reference SNPs file: `dbsnp_146.hg38.vcf` or other reference SNPs file base on hg38
 
 ### example
