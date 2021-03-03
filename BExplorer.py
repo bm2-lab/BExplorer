@@ -107,7 +107,7 @@ def ckeck_File_Dir():
 def generate_primary_genome_file():
     genome_file = os.listdir('genomeDATA')[0]
     print('')
-    print('genome index has not been detected and is being created... It will take some time...')
+    print('Genome index has not been detected and is being created... It will take some time...')
     op = open('genomeDATA/{}'.format(genome_file),'r')
     linenum = 0
     numlist, titleseq, primaryseq = [], [], []
@@ -132,7 +132,7 @@ def generate_primary_genome_file():
             if linenum >= titleseq[tt+1]:
                 break
         op1.close
-    print('genome index created successfully !')
+    print('Genome index created successfully !')
     return
 
 def find_primary_genome_index():
@@ -484,7 +484,7 @@ if __name__ == '__main__':
         generate_primary_genome_file()
     else:
         print('')
-        print('genome index has been created!')
+        print('Genome index has been created!')
     tidic = find_primary_genome_index()
 
     with open('supportfile/primary_genome', 'r') as op_genome, \
@@ -501,9 +501,9 @@ if __name__ == '__main__':
         print('Base at the position in reference genome is:', targetbase)
 
         table_Info = [str(args.chr), str(args.pos), targetbase, args.transtype, args.editor]
-        op_output.write('\t'.join(['chr', 'position', 'target_in_ref', 'transtype', 'editor', 'potential_gRNA_num',
-                                   'potential_gRNA', 'RRAscore', 'sameBase_num_in_actWindow', 'GC%', 'frequency_in_genome',
-                                   'SNPsite_num', 'offtarget_score']) + '\n')
+        op_output.write('\t'.join(['chr', 'position', 'target_in_ref', 'transtype', 'editor', 'candidate _gRNA_num',
+                                   'candidate _gRNA', 'RRAscore', 'identicalBase_num_in_actWindow', 'GC%', 'repeated_gRNA_num_in_genome',
+                                   'SNP_num', 'offtarget_score']) + '\n')
         #####################筛选#############################
 
         pam_whether = check_pam(granLen, pam)
@@ -512,14 +512,14 @@ if __name__ == '__main__':
 
             (cangrna, cangrna_startbase) = get_cangrna(args, pamLen, granLen, actWindow_range, seq_triple)
             print('')
-            print('Candidate gRNAs are as follows:')
+            print('* * * * * * * * 1. CANDIDATE GRNAS ARE AS FOLLOWS * * * * * * * * * * * * * *')
             for grna in cangrna_startbase:
                 print(grna, '\t','gRNA start site：', cangrna_startbase[grna], '\t',
-                      'target base position on grna:', args.pos - cangrna_startbase[grna]+1)
+                      'target base position on gRNA:', args.pos - cangrna_startbase[grna]+1)
 
             if len(cangrna) == 0:  
                 print('Activity window filter failed')
-                op_output.write('\t'.join(table_Info + ['0'] + ['activity_window_wrong']*7) + '\n')
+                op_output.write('\t'.join(table_Info + ['0'] + ['activity_window_error']*7) + '\n')
                 file_write_whether = 1
                 quit()
 
@@ -528,7 +528,7 @@ if __name__ == '__main__':
             if len(cangrna) == 0 and file_write_whether != 1:  
                 print('Continuous same bases filter failed')
 
-                op_output.write('\t'.join(table_Info +['0'] + ['continuous_samebase_wrong'] * 7) + '\n')
+                op_output.write('\t'.join(table_Info +['0'] + ['continuous_identical_base_error'] * 7) + '\n')
                 file_write_whether = 1
                 quit()
 
@@ -542,31 +542,31 @@ if __name__ == '__main__':
 
             if len(cangrna) == 0 and file_write_whether != 1:  
                 print('GC% filter failed')
-                op_output.write('\t'.join(table_Info + ['0'] + ['GCratio_wrong'] * 3 + [nopass_gc_str] + ['GCratio_wrong'] * 3) + '\n')
+                op_output.write('\t'.join(table_Info + ['0'] + ['GC_ratio_error'] * 3 + [nopass_gc_str] + ['GC_ratio_error'] * 3) + '\n')
                 file_write_whether = 1
                 quit()
 
-            print('\n', '# # # # # # # scores of each standard are as follows # # # # # # # # # #')
+            print('\n', '* * * * * * * * 2. SCORES OF EACH CRITERIA ARE AS FOLLOWS * * * * * * * * * * ')
 
             if len(cangrna) != 0:  
 
                 sameinwindow_dic = activity_window(args, actWindow_range)
-                print('   Number of same target bases in activity window: ', str(sameinwindow_dic).strip('{}').replace("'", ''))
+                print('Number of Bases Identical to Target Site in Activity Window: ', str(sameinwindow_dic).strip('{}').replace("'", ''))
 
                 gccon_dic, gccon_dic1 = gc_concentration()
-                print('   GC% in each gRNA:           ', str(gccon_dic1).strip('{}').replace("'", ''))
+                print('GC% in the gRNA Sequence:           ', str(gccon_dic1).strip('{}').replace("'", ''))
 
                 frequency_dic = get_frequency()
-                print('   frequency in human genome:  ', str(frequency_dic).strip('{}').replace("'", ''))
+                print('Number of Tepeated gRNA Sequences in Whole Genome:           ', str(frequency_dic).strip('{}').replace("'", ''))
 
                 snprst_dic = count_SNP(args, cangrna_startbase, granLen)
-                print('   Number of SNPs:      ', '\t', str(snprst_dic).strip('{}').replace("'", ''))
+                print('Number of SNPs in gRNA Sequence:    ', str(snprst_dic).strip('{}').replace("'", ''))
 
                 offscore_dic = find_offtarget(pam, pamLen, granLen)
-                print('   Off target score:    ', '\t', str(offscore_dic).strip('{}').replace("'", ''))
+                print('Potential off-target Score:         ', str(offscore_dic).strip('{}').replace("'", ''))
 
                 RRAresult_list = RRA()
-                print('Final score(RRA):     ', '\t', str(RRAresult_list).strip('[]').replace("'", ''))
+                print('Final Score(RRA):     ', '\t', str(RRAresult_list).strip('[]').replace("'", ''))
 
                 column9 = formatting_output(sameinwindow_dic, RRAresult_list)
                 column10 = formatting_output(gccon_dic, RRAresult_list)
@@ -579,15 +579,15 @@ if __name__ == '__main__':
                 op_output.write('\t'.join(table_Info + [str(len(cangrna)), RRAresult_list[0], RRAresult_list[1], column9,
                                                         column10, column11, column12, column13]) + '\n')
 
-                print('\n', '# # # # # # # # # # # # # # best gRNA # # # # # # # # # # # # # # # # # # #')
-                print('best gRNA:', RRAresult_list[0].split(',')[0])
+                print('\n', '* * * * * * * * 3. BEST GRNA * * * * * * * * * * * * * * * * * * * * * * * * *')
+                print('Best gRNA:', RRAresult_list[0].split(',')[0])
 
         else:  
             op_output.write('\t'.join(table_Info + ['0'] + ['no_PAM'] * 7) + '\n')
             quit()
 
     print('')
-    print('# # # # # # # # pleiotropy prediction of the location # # # # # # # # # # #')
+    print('* * * * * * * * 4. PLEIOTROPY PREDICTION OF THE LOCATION * * * * * * * * * * *')
     show_pleiotropy_rs(args)
     print('')
-    print('Analysis complete！')
+    print('* * * * * * * * * * * * * * ANALYSIS COMPLETE！ * * * * * * * * * * * * * * * * * * *')
