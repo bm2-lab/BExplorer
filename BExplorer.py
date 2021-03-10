@@ -410,9 +410,10 @@ def RRA():
     RRAresult_list1 = []
     RRAresult_list2 = []
     linecounter = 0
+    title_line_num = int(subprocess.getoutput('grep -n "Name Score" "supportfile/RRAresult_N2A"').split(':')[0])
     for line in op_readRRAresult.readlines():
         linecounter += 1
-        if linecounter >= 3:
+        if linecounter > title_line_num:
             line = re.sub(r' +', ' ', line)
             line = line.replace('\n', '')
             line_list = line.split(' ')
@@ -545,7 +546,8 @@ if __name__ == '__main__':
                 file_write_whether = 1
                 quit()
 
-            print('\n', '* * * * * * * * 2. SCORES OF EACH CRITERIA ARE AS FOLLOWS * * * * * * * * * * ')
+            print('')
+            print('* * * * * * * * 2. SCORES OF EACH CRITERIA ARE AS FOLLOWS * * * * * * * * * * ')
 
             if len(cangrna) != 0:  
 
@@ -565,7 +567,7 @@ if __name__ == '__main__':
                 print('Potential off-target Score:         ', str(offscore_dic).strip('{}').replace("'", ''))
 
                 RRAresult_list = RRA()
-                print('Final Score(RRA):     ', '\t', str(RRAresult_list).strip('[]').replace("'", ''))
+                print('Final Score(RRA):                   ', str(RRAresult_list).strip('[]').replace("'", ''))
 
                 column9 = formatting_output(sameinwindow_dic, RRAresult_list)
                 column10 = formatting_output(gccon_dic, RRAresult_list)
@@ -578,7 +580,8 @@ if __name__ == '__main__':
                 op_output.write('\t'.join(table_Info + [str(len(cangrna)), RRAresult_list[0], RRAresult_list[1], column9,
                                                         column10, column11, column12, column13]) + '\n')
 
-                print('\n', '* * * * * * * * 3. BEST GRNA * * * * * * * * * * * * * * * * * * * * * * * * *')
+                print('')
+                print('* * * * * * * * 3. BEST GRNA * * * * * * * * * * * * * * * * * * * * * * * * *')
                 print('Best gRNA:', RRAresult_list[0].split(',')[0])
 
         else:  
@@ -589,4 +592,4 @@ if __name__ == '__main__':
     print('* * * * * * * * 4. PLEIOTROPY PREDICTION OF THE LOCATION * * * * * * * * * * *')
     show_pleiotropy_rs(args)
     print('')
-    print('* * * * * * * * * * * * * * ANALYSIS COMPLETE！ * * * * * * * * * * * * * * * * * * *')
+    print('* * * * * * * * ANALYSIS COMPLETE！ * * * * * * * * ')
