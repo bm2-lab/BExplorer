@@ -48,7 +48,7 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 3. Parameter `--pos`: please enter the target site position after this parameter.
 4. Parameter `--transtype`: please enter the base conversion type after this parameter. Please note that this parameter needs to be matched with the parameter --editor.
 5. Parameter `--editor`: please enter base editor you want to use after this parameter. Please note that this parameter needs to be matched with the parameter --transtype.
-6. Command line: `/BExplorer/python3 BExplorer.py --chr \[target site chromosome] --pos \[target site position] --transtype \[base conversion type] --editor \[base editor you want to use]`
+6. Command line: `/BExplorer/python3 BExplorer.py --chr [target site chromosome] --pos [target site position] --transtype [base conversion type] --editor [base editor you want to use]`
 
 
 ### Example
