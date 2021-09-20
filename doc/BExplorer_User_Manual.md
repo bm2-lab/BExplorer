@@ -42,8 +42,16 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
   
 > NOTE: if --transtype = c2t, --editor can only choose CBE. if --transtype = a2g, --editor can only choose ABE. 
 
+### How to select parameters
+1. Before selecting parameters, please confirm the chromosome number and position of your target site and the base editor you want to use.
+2. Parameter --chr: please enter the target site chromosome after this parameter.
+3. Parameter --pos: please enter the target site position after this parameter.
+4. Parameter --transtype: please enter the base conversion type after this parameter. Please note that this parameter needs to be matched with the parameter --editor.
+5. Parameter --editor: please enter base editor you want to use after this parameter. Please note that this parameter needs to be matched with the parameter --transtype.
+6. Command line: /BExplorer/python3 BExplorer.py --chr \[target site chromosome] --pos \[target site position] --transtype \[base conversion type] --editor \[base editor you want to use]
 
-### example
+
+### Example
 1. git clone https://github.com/bm2-lab/BExplorer.git
 2. cd BExplorer/src && tar -xzvf software.tar.gz 
 3. install all required software and package
