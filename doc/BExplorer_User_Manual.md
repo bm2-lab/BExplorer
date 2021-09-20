@@ -44,11 +44,11 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 
 ### How to select parameters
 1. Before selecting parameters, please confirm the chromosome number and position of your target site and the base editor you want to use.
-2. Parameter --chr: please enter the target site chromosome after this parameter.
-3. Parameter --pos: please enter the target site position after this parameter.
-4. Parameter --transtype: please enter the base conversion type after this parameter. Please note that this parameter needs to be matched with the parameter --editor.
-5. Parameter --editor: please enter base editor you want to use after this parameter. Please note that this parameter needs to be matched with the parameter --transtype.
-6. Command line: /BExplorer/python3 BExplorer.py --chr \[target site chromosome] --pos \[target site position] --transtype \[base conversion type] --editor \[base editor you want to use]
+2. Parameter `--chr`: please enter the target site chromosome after this parameter.
+3. Parameter `--pos`: please enter the target site position after this parameter.
+4. Parameter `--transtype`: please enter the base conversion type after this parameter. Please note that this parameter needs to be matched with the parameter --editor.
+5. Parameter `--editor`: please enter base editor you want to use after this parameter. Please note that this parameter needs to be matched with the parameter --transtype.
+6. Command line: `/BExplorer/python3 BExplorer.py --chr \[target site chromosome] --pos \[target site position] --transtype \[base conversion type] --editor \[base editor you want to use]`
 
 
 ### Example
@@ -56,7 +56,7 @@ BExplorer is an integrated and comprehensive computational pipeline for optimizi
 2. cd BExplorer/src && tar -xzvf software.tar.gz 
 3. install all required software and package
 4. put `GRCh38.fna` into BExplorer/genomeDATA, put `dbsnp_146.hg38.vcf` into BExplorer/snpDATA
-5. /BExplorer/python3 BExplorer.py --chr 1 --pos 155238215 --transtype c2t --editor BE3
+5. `/BExplorer/python3 BExplorer.py --chr 1 --pos 155238215 --transtype c2t --editor BE3`
 
 
 ### Output
